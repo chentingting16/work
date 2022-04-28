@@ -51,3 +51,40 @@ create table test（
 2. trx_id：记录着最近修改这条数据的事务ID
 3. roll_pointer：主要是为innodb的mvcc生成版本连使用
 4. 其他列数据：后面的就是存放我们具体插入的列的数据了，没有什么特殊的
+
+# InnoDB数据页存储结构
+
+[MySQL之数据页结构 - 墨天轮 (modb.pro)](https://www.modb.pro/db/139052)
+
+## 页类型
+
+* 页是InnoDB管理存储空间的基本单位，一个页的大小一般是16KB。
+* InnoDB设计了多种类型的页，如存放表空间头部信息的页、存放Change Buffer的页、存放undo日志的页等...
+* 存放记录的页官方成为索引页(INDEX)页， 也叫数据页。
+
+## 数据页结构
+
+![image-20220428160644872](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428160644872.png)
+
+![image-20220428160726104](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428160726104.png)
+
+* 向数据页中插入记录
+
+![image-20220428161755049](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428161755049.png)
+
+![image-20220428161724790](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428161724790.png)
+
+![image-20220428165058137](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428165058137.png)
+
+* 页目录
+
+![image-20220428165130428](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428165130428.png)
+
+![image-20220428165206903](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428165206903.png)
+
+![image-20220428165227603](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428165227603.png)
+
+![image-20220428165248981](C:\Users\ctt\AppData\Roaming\Typora\typora-user-images\image-20220428165248981.png)
+
+# 索引结构
+
